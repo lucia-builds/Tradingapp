@@ -4,7 +4,7 @@ from binance.client import Client
 from binance.exceptions import BinanceAPIException
 from logging_config import logger
 
-# Load the secret keys from the .env file
+# secret key loading from .env file
 load_dotenv()
 
 API_KEY = os.getenv('BINANCE_API_KEY')
@@ -17,10 +17,9 @@ def get_client():
             logger.error("API keys are missing! Check your .env file.")
             return None
 
-        # testnet=True is CRITICAL. Without it, you connect to the real exchange!
         client = Client(API_KEY, API_SECRET, testnet=True)
         
-        # Test the connection by pinging the futures server
+        # Testing the connection
         client.futures_ping()
         logger.info("Successfully connected to Binance Futures Testnet.")
         return client
@@ -32,7 +31,6 @@ def get_client():
         logger.error(f"An unexpected error occurred: {e}")
         return None
 
-# This block allows us to run this file directly to test the connection
 if __name__ == "__main__":
     logger.info("Testing Binance connection...")
     test_client = get_client()

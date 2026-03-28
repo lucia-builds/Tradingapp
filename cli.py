@@ -6,7 +6,6 @@ from logging_config import logger
 from rich.console import Console
 from rich.table import Table
 
-# Initialize the Typer app and Rich console
 app = typer.Typer(help="Simplified Trading Bot for Binance Futures Testnet")
 console = Console()
 
@@ -20,17 +19,16 @@ def trade(
 ):
     """Place a trade on Binance Futures Testnet."""
     try:
-        # 1. Validate Input (this will raise an error if they typed something wrong)
         sym, sde, typ, qty, prc = validate_order_input(symbol, side, order_type, quantity, price)
         
         console.print(f"\n[bold yellow]Processing {typ} order: {sde} {qty} {sym}...[/bold yellow]")
         
-        # 2. Execute Order
+        # Ordering
         response = execute_order(sym, sde, typ, qty, prc)
         
-        # 3. Print Beautiful Output if successful
+        # Display the output on successful order
         if response:
-            table = Table(title="✅ Order Successfully Placed!", style="green")
+            table = Table(title="Hurrah! order placed successfully", style="green")
             table.add_column("Order ID", justify="center")
             table.add_column("Status", justify="center")
             table.add_column("Executed Qty", justify="center")
@@ -42,7 +40,7 @@ def trade(
             )
             console.print(table)
         else:
-            console.print("[bold red]❌ Order Failed! Check trading_bot.log for details.[/bold red]")
+            console.print("[bold red]Order Failed![/bold red]")
 
     except ValueError as e:
         console.print(f"[bold red]Input Error:[/bold red] {e}")

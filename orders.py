@@ -9,7 +9,7 @@ def execute_order(symbol: str, side: str, order_type: str, quantity: float, pric
         return None
 
     try:
-        # Build the base order parameters
+        # Added base parameters
         params = {
             'symbol': symbol,
             'side': side,
@@ -20,20 +20,20 @@ def execute_order(symbol: str, side: str, order_type: str, quantity: float, pric
         # If it's a LIMIT order, Binance requires a price and a timeInForce
         if order_type == 'LIMIT':
             params['price'] = price
-            params['timeInForce'] = 'GTC'  # GTC = Good Till Canceled
+            params['timeInForce'] = 'GTC' 
 
         logger.info(f"Sending Request: {side} {quantity} {symbol} | Type: {order_type}")
         
-        # Place the order via the python-binance library
+        # Send the request
         response = client.futures_create_order(**params)
         
         # Log and return the successful response
-        logger.info(f"Order Success! ID: {response.get('orderId')} | Status: {response.get('status')} | Executed Qty: {response.get('executedQty')}")
+        logger.info(f"Hurrah! Order is Successful! ID: {response.get('orderId')} | Status: {response.get('status')} | Executed Qty: {response.get('executedQty')}")
         return response
 
     except BinanceAPIException as e:
         logger.error(f"Binance API Error: {e.message} (Code: {e.code})")
         return None
     except Exception as e:
-        logger.error(f"Unexpected System Error: {e}")
+        logger.error(f"System Error: {e}")
         return None
