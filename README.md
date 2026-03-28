@@ -1,14 +1,11 @@
 # Binance Futures Testnet Trading Bot
-
 A simplified Python Command Line Interface (CLI) application to execute Market and Limit orders on the Binance Futures Testnet (USDT-M).
-
 ## Features
 * **Order Execution:** Place MARKET and LIMIT orders (BUY/SELL).
 * **Validation:** Strict input validation for quantities, prices, and order types.
 * **Error Handling:** Graceful handling of Binance API exceptions.
 * **Logging:** Console and file-based logging (`trading_bot.log`).
 * **Interactive CLI:** Built with `Typer` and `Rich` for a clean, user-friendly terminal experience.
-
 ## Setup Instructions
 
 1. **Clone the repository:**
@@ -16,7 +13,6 @@ A simplified Python Command Line Interface (CLI) application to execute Market a
    git clone <your-repo-url>
    cd Trade_Bot
    \`\`\`
-
 2. **Set up a virtual environment (optional but recommended):**
    \`\`\`bash
    python -m venv venv
