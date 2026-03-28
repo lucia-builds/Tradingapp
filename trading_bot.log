@@ -1,2 +1,5 @@
 2026-03-28 19:15:57,222 - INFO - Testing Binance connection...
 2026-03-28 19:15:58,359 - INFO - Successfully connected to Binance Futures Testnet.
+2026-03-28 19:26:27,391 - INFO - Successfully connected to Binance Futures Testnet.
+2026-03-28 19:26:27,393 - INFO - Sending Request: BUY 0.01 BTCUSDT | Type: MARKET
+2026-03-28 19:26:27,652 - INFO - Order Success! ID: 13002265003 | Status: NEW | Executed Qty: 0.000
